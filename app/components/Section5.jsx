@@ -9,6 +9,7 @@ import LazyLoad from "vanilla-lazyload";
 import { useTheme } from "@emotion/react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-scroll";
 
 const prestations = [
   {
@@ -117,7 +118,7 @@ function Section5() {
           {prestations.map((prestation, index) => (
             <Grid
               key={index}
-              item
+              
               size={{ xs: 12, md: 4 }}
               className="flex items-center"
             >
@@ -139,6 +140,7 @@ function Section5() {
                   ) : (
                     <p>{prestation.content}</p>
                   )}
+                  <Link to="sectionContact" smooth={true} duration={500}>
                   <Button
                     startIcon={<DoubleArrowIcon />}
                     className="mt-4"
@@ -147,6 +149,7 @@ function Section5() {
                   >
                     Register now
                   </Button>
+                  </Link>
                 </Paper>
               </motion.div>
             </Grid>

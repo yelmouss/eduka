@@ -7,6 +7,8 @@ import React, { useEffect } from "react";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-scroll";
+
 
 function Section4() {
   const theme = useTheme();
@@ -91,7 +93,7 @@ function Section4() {
               >
                 <span className="text-red-500">E</span>TUDIANTS
               </h2>
-              <div className="relative h-[400px] w-[320px] overflow-hidden rounded-lg">
+              <div className="py-20 relative h-[400px] w-[420px] overflow-hidden rounded-lg">
                 <Image
                   fill
                   src="/Visuels-articles.png"
@@ -99,6 +101,7 @@ function Section4() {
                   className="w-full object-cover"
                 />
               </div>
+              <Link to="sectionContact" smooth={true} duration={500}>
               <Button
                 endIcon={<DoubleArrowIcon />}
                 sx={{
@@ -114,6 +117,7 @@ function Section4() {
               >
                 Learn more
               </Button>
+              </Link>
             </motion.div>
           </Grid>
         </Grid>

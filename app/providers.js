@@ -103,7 +103,7 @@ const Providers = ({ children }) => {
               flexDirection: "column",
             }}
           >
-            <span className="py-10 text-4xl myGradient">             
+            <span className="py-10 text-2xl myGradient">             
               <ReactTyped strings={[`Chargement en cours`]} typeSpeed={10} />
             </span>
             <motion.div

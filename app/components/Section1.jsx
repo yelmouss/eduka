@@ -29,7 +29,7 @@ function Section1() {
         color: theme.one.main,
       }}
     >
-      <Grid container spacing={0} sx={{ width: "100%" }}>
+      <Grid container spacing={0} sx={{ width: "100%", minHeight: "100vh" }}>
         {/* Grid gauche avec contenu */}
         <Grid
           size={{ xs: 12, md: 6 }}
@@ -43,7 +43,7 @@ function Section1() {
             py: 10,
           }}
         >
-           <motion.div
+          <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.2 }}
@@ -110,7 +110,7 @@ function Section1() {
           size={{ xs: 12, md: 6 }}
           sx={{
             backgroundImage: 'url("/woman.jpg")',
-            minHeight: "100vh",
+
             backgroundSize: "cover",
             backgroundPosition: "left",
             boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
@@ -120,9 +120,7 @@ function Section1() {
             },
           }}
           className={"flex items-center justify-center"}
-        >
-         
-        </Grid>
+        ></Grid>
       </Grid>
     </section>
   );

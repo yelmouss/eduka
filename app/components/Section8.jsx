@@ -5,7 +5,7 @@ import { useTheme } from "@emotion/react";
 import Image from "next/image";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import ReactPlayer from "react-player";
-
+import { Link } from "react-scroll";
 function Section8() {
   const theme = useTheme();
 
@@ -83,14 +83,16 @@ function Section8() {
                   height="auto"
                 />
               </div>
-              <Button
-                startIcon={<DoubleArrowIcon />}
-                className="mt-4"
-                variant="contained"
-                color="primary"
-              >
-                Register now
-              </Button>
+              <Link to="sectionContact" smooth={true} duration={500}>
+                <Button
+                  startIcon={<DoubleArrowIcon />}
+                  className="mt-4"
+                  variant="contained"
+                  color="primary"
+                >
+                  Register now
+                </Button>
+              </Link>
             </Paper>
           </Grid>
         </Grid>

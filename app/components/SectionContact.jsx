@@ -8,68 +8,128 @@ import {
   MenuItem,
   Select,
   TextField,
+  Snackbar,
+  Alert,
+  Paper,
+  Typography,
+  Box,
 } from "@mui/material";
-import React, { useEffect } from "react";
-import Grid from "@mui/material/Grid2";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Image from "next/image";
-import { Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "@emotion/react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import axios from "axios";
+import Grid from "@mui/material/Grid2";
+import Image from "next/image";
 
 function SectionContact() {
   const theme = useTheme();
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.1 });
 
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    subject: "",
+    message: "",
+    phone: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
   useEffect(() => {
-    if (inView) {
-      controls.start({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 1.2 },
-      });
-    } else {
-      controls.start({
-        opacity: 0,
-        y: 50,
-        transition: { duration: 1.2 },
-      });
-    }
+    controls.start({
+      opacity: inView ? 1 : 0,
+      y: inView ? 0 : 50,
+      transition: { duration: 1.2 },
+    });
   }, [controls, inView]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData((prevData) => ({ ...prevData, phone: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const htmlContent = `
+      <div style="font-family: Arial, sans-serif; color: ${theme.two.main};">
+        <div style="text-align: center; padding: 20px; background-color: ${
+          theme.four.main
+        };">
+          <img src="/LOGO_EDUKALIS.png" alt="Edukalis" width="200" height="200" />
+        </div>
+        <div style="padding: 20px;">
+          <h1 style="color: ${theme.one.main};">Nouvelle demande de contact</h1>
+          <p><strong>Nom complet :</strong> ${formData.fullName}</p>
+          <p><strong>Email :</strong> ${formData.email}</p>
+          <p><strong>Téléphone :</strong> ${formData.phone}</p>
+          <p><strong>Sujet :</strong> ${formData.subject}</p>
+          <p><strong>Message :</strong><br/> ${formData.message}</p>
+          <hr />
+          <p style="font-style: italic;">Ceci est un email automatique envoyé depuis le site web d'EDUKALIS suite à votre demande de contact.</p>
+          <p>Vous pouvez répondre directement à cet email si vous pensez qu'il s'agit d'une erreur.</p>
+          <p>Nous vous contacterons au plus vite.</p>
+        </div>
+        <div style="text-align: center; padding: 10px; background-color: ${
+          theme.four.main
+        }; color: ${theme.two.main};">
+          <p>&copy; ${new Date().getFullYear()} EDUKALIS. Tous droits réservés.</p>
+        </div>
+      </div>
+    `;
+
+    const data = {
+      to: formData.email,
+      subject: `Contact: ${formData.subject}`,
+      html: htmlContent,
+    };
+
+    try {
+      await axios.post("/api/SendContactMail", data);
+      setSnackbarMessage(
+        `Email envoyé à ${formData.email} concernant ${formData.subject}`
+      );
+      setSnackbarOpen(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        subject: "",
+        message: "",
+        phone: "",
+      });
+    } catch (error) {
+      setSnackbarMessage("Une erreur s'est produite lors de l'envoi.");
+      setSnackbarOpen(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section ref={ref}>
-      <Container
-        sx={{
-          p: 4,
-          py: 10,
-          color: theme.two.main,
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-        >
-          <Image
-            src="/LOGO_EDUKALIS.png"
-            alt="Edukalis"
-            width={200}
-            height={200}
-          />
-        </motion.div>
-        <motion.h6
-          className="text-4xl font-bold py-5"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-        >
-          Ensemble, faisons avancer vos ambitions !
-        </motion.h6>
-
+      <Container sx={{ p: 4, py: 10, color: theme.two.main }}>
+      <Image
+                src="/LOGO_EDUKALIS.png"
+                alt="Edukalis"
+                width={200}
+                height={200}
+                style={{
+                  alignSelf: "start",
+                  justifySelf: "start",
+                }}
+              />
+      <h4 className="text-4xl py-10">Ensemble, faisons avancer vos ambitions !</h4>
         <Grid container spacing={3}>
           <Grid
             size={{ xs: 12, sm: 6 }}
@@ -101,22 +161,17 @@ function SectionContact() {
               </p>
             </motion.div>
           </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, delay: 0.6 }}
-            >
+          <Grid size={{ xs: 12, md: 6 }}>
+            <motion.div initial={{ opacity: 0, x: 50 }} animate={controls}>
               <Paper elevation={3} sx={{ p: 4 }}>
                 <Typography
-                  
                   className="text-2xl font-bold text-red-500 py-5"
                   component={"h6"}
                 >
                   NOUS CONTACTER
                 </Typography>
                 <Box className="flex items-center justify-center">
-                  <form autoComplete="off">
+                  <form autoComplete="off" onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                       <Grid size={12}>
                         <TextField
@@ -124,6 +179,9 @@ function SectionContact() {
                           label="Nom complet"
                           variant="outlined"
                           required
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={handleChange}
                         />
                       </Grid>
                       <Grid size={12}>
@@ -133,23 +191,35 @@ function SectionContact() {
                           variant="outlined"
                           type="email"
                           required
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
                         />
                       </Grid>
-
                       <Grid size={12}>
-                        <FormControl variant="standard" fullWidth>
-                          <InputLabel htmlFor="Sujet">Sujet</InputLabel>
+                        <PhoneInput
+                          country={"fr"}
+                          value={formData.phone}
+                          onChange={handlePhoneChange}
+                          inputStyle={{ width: "100%" }}
+                        />
+                      </Grid>
+                      <Grid size={12}>
+                        <FormControl variant="outlined" fullWidth>
+                          <InputLabel htmlFor="subject">Sujet</InputLabel>
                           <Select
                             fullWidth
                             label="Sujet"
                             variant="outlined"
-                            id="Sujet"
+                            id="subject"
+                            name="subject"
+                            value={formData.subject}
+                            onChange={handleChange}
                             required
                           >
                             <MenuItem value="Etudiant">Etudiant</MenuItem>
                             <MenuItem value="Ecole">Ecole</MenuItem>
-                            <MenuItem value="Ecole">Entreprise</MenuItem>
-
+                            <MenuItem value="Entreprise">Entreprise</MenuItem>
                             <MenuItem value="Partenariat">Partenariat</MenuItem>
                             <MenuItem value="Autre">Autre</MenuItem>
                           </Select>
@@ -163,6 +233,9 @@ function SectionContact() {
                           multiline
                           rows={4}
                           required
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
                         />
                       </Grid>
                       <Grid size={12}>
@@ -171,8 +244,9 @@ function SectionContact() {
                           variant="contained"
                           color="primary"
                           type="submit"
+                          disabled={isLoading}
                         >
-                          Envoyer
+                          {isLoading ? "Envoi en cours..." : "Envoyer"}
                         </Button>
                       </Grid>
                     </Grid>
@@ -183,6 +257,16 @@ function SectionContact() {
           </Grid>
         </Grid>
       </Container>
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={() => setSnackbarOpen(false)}
+      >
+        <Alert onClose={() => setSnackbarOpen(false)} severity="success">
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </section>
   );
 }
