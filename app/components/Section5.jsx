@@ -42,7 +42,7 @@ function Section5() {
   return (
     <section className="section5-container">
       <video autoPlay loop muted className="section5-video">
-        <source src="/video1.mov" type="video/mp4" />
+        <source src="/Video1.mp4" type="video/mp4" />
       </video>
       <Container className="py-20 text-center">
         <Image
