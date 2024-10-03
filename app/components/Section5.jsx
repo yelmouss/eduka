@@ -1,9 +1,10 @@
+"use client"
 import { Button, Container, Paper } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-
+import ReactPlayer from "react-player";
 const prestations = [
   {
     title: "ORIENTATION ET CONSEILS",
@@ -41,9 +42,18 @@ const prestations = [
 function Section5() {
   return (
     <section className="section5-container">
-      <video autoPlay loop muted className="section5-video">
+        <ReactPlayer
+                  url="/Video1.mp4"
+                  playing
+                  loop
+                  muted
+                  className="section5-video"
+                  width="100%"
+                  height="auto"
+                />
+      {/* <video autoPlay loop muted className="section5-video">
         <source src="/Video1.mp4" type="video/mp4" />
-      </video>
+      </video> */}
       <Container className="py-20 text-center">
         <Image
           src="/LOGO_EDUKALIS.png"

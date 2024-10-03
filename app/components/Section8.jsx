@@ -4,6 +4,7 @@ import { Button, Container, Paper, Typography } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import Image from "next/image";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import ReactPlayer from "react-player";
 
 function Section8() {
   const theme = useTheme();
@@ -70,10 +71,17 @@ function Section8() {
               >
                 Forum ’ <span className="text-red-500">ED</span>uc
               </Typography>
-              <video autoPlay loop muted className="my-4 w-full rounded-lg">
-                <source src="/video4.mov" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div style={{ width: "100%", maxWidth: "100%" }}>
+                <ReactPlayer
+                  url="/Video4.mp4"
+                  playing
+                  loop
+                  muted
+                  className="my-4 rounded-lg"
+                  width="100%"
+                  height="auto"
+                />
+              </div>
               <Button
                 startIcon={<DoubleArrowIcon />}
                 className="mt-4"
