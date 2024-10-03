@@ -65,7 +65,7 @@ function Section8() {
             <Paper elevation={3} sx={{ p: 4 }}>
               <Typography
                 variant="h2"
-                className="font-bold"
+                className="font-bold text-4xl"
                 sx={{
                   color: theme.two.main,
                 }}

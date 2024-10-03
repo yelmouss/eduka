@@ -1,13 +1,15 @@
 "use client";
 import { Button, Container, Paper } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import Grid from "@mui/material/Grid2";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import ReactPlayer from "react-player";
-import { useEffect } from 'react';
-import LazyLoad from 'vanilla-lazyload';
+import LazyLoad from "vanilla-lazyload";
 import { useTheme } from "@emotion/react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const prestations = [
   {
     title: "ORIENTATION ET CONSEILS",
@@ -43,19 +45,42 @@ const prestations = [
 ];
 
 function Section5() {
-
   const theme = useTheme();
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0.1 });
+
   useEffect(() => {
     const lazyLoadInstance = new LazyLoad({
       elements_selector: ".lazy",
     });
 
     return () => {
-      lazyLoadInstance.destroy();  // Nettoyage
+      lazyLoadInstance.destroy(); // Nettoyage
     };
   }, []);
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1.2 },
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        y: 50,
+        transition: { duration: 1.2 },
+      });
+    }
+  }, [controls, inView]);
+
   return (
-    <section className="section5-container" style={{ color: theme.two.main,}}>
+    <section
+      ref={ref}
+      className="section5-container"
+      style={{ color: theme.two.main }}
+    >
       <ReactPlayer
         url="/Video1.mp4"
         playing
@@ -67,43 +92,63 @@ function Section5() {
       />
 
       <Container className="py-20 text-center">
-        <Image
-          src="/LOGO_EDUKALIS.png"
-          alt="Edukalis"
-          width={200}
-          height={200}
-          style={{ alignSelf: "start", justifySelf: "start" }}
-        />
-        <h3 className="text-4xl font-bold text-white py-5">PRESTATIONS</h3>
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          <Image
+            src="/LOGO_EDUKALIS.png"
+            alt="Edukalis"
+            width={200}
+            height={200}
+            style={{ alignSelf: "start", justifySelf: "start" }}
+          />
+        </motion.div>
+        <motion.h3
+          className="text-4xl font-bold text-white py-5"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.2 }}
+        >
+          PRESTATIONS
+        </motion.h3>
         <Grid container spacing={6} className="w-full mt-5">
           {prestations.map((prestation, index) => (
             <Grid
               key={index}
+              item
               size={{ xs: 12, md: 4 }}
               className="flex items-center"
             >
-              <Paper className="p-4">
-                <h4 className="text-red-500 text-3xl mb-5">
-                  {prestation.title}
-                </h4>
-                {prestation.items ? (
-                  <ul className="text-left">
-                    {prestation.items.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>{prestation.content}</p>
-                )}
-                <Button
-                  startIcon={<DoubleArrowIcon />}
-                  className="mt-4"
-                  variant="contained"
-                  color="primary"
-                >
-                  Register now
-                </Button>
-              </Paper>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={controls}
+                transition={{ delay: index * 0.2 }}
+              >
+                <Paper className="p-4">
+                  <h4 className="text-red-500 text-3xl mb-5">
+                    {prestation.title}
+                  </h4>
+                  {prestation.items ? (
+                    <ul className="text-left">
+                      {prestation.items.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{prestation.content}</p>
+                  )}
+                  <Button
+                    startIcon={<DoubleArrowIcon />}
+                    className="mt-4"
+                    variant="contained"
+                    color="primary"
+                  >
+                    Register now
+                  </Button>
+                </Paper>
+              </motion.div>
             </Grid>
           ))}
         </Grid>
