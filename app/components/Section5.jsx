@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Button, Container, Paper } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -42,16 +42,16 @@ const prestations = [
 function Section5() {
   return (
     <section className="section5-container">
-        <ReactPlayer
-                  url="/Video1.mp4"
-                  playing
-                  loop
-                  muted
-                  className="section5-video"
-                  width="100%"
-                  height="auto"
-                />
-     
+      <ReactPlayer
+        url="/Video1.mp4"
+        playing
+        loop
+        muted
+        className="section5-video"
+        width="100%"
+        height="auto"
+      />
+
       <Container className="py-20 text-center">
         <Image
           src="/LOGO_EDUKALIS.png"
@@ -69,7 +69,9 @@ function Section5() {
               className="flex items-center"
             >
               <Paper className="p-4">
-                <h4 className="text-red-500 text-3xl mb-5">{prestation.title}</h4>
+                <h4 className="text-red-500 text-3xl mb-5">
+                  {prestation.title}
+                </h4>
                 {prestation.items ? (
                   <ul className="text-left">
                     {prestation.items.map((item, idx) => (
