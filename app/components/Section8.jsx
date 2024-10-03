@@ -70,7 +70,7 @@ function Section8() {
                   color: theme.two.main,
                 }}
               >
-                Forum ’ <span className="text-red-500">ED</span>uc
+                Forum’<span className="text-red-500">ED</span>uc
               </Typography>
               <div style={{ width: "100%", maxWidth: "100%" }}>
                 <ReactPlayer

@@ -17,10 +17,10 @@ import Image from "next/image";
 
 const pages = [
   "A propos",
-  "Prestations",
+  "Etudiants",
   "Ecoles",
   "Entreprises",
-  "Forum",
+  "Forum’Educ",
   "Contact",
 ];
 
@@ -61,8 +61,6 @@ function Header() {
               />
             </Box>
 
-         
-
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
@@ -70,7 +68,7 @@ function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color={trigger ? "white" :  theme.two.main}
+                color={trigger ? "white" : theme.two.main}
               >
                 <MenuIcon />
               </IconButton>
@@ -101,8 +99,8 @@ function Header() {
                 ))}
               </Menu>
             </Box>
-        
-            <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} >
+
+            <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
               <Image
                 src="/LOGO_EDUKALIS.png"
                 alt="Edukalis"
@@ -116,7 +114,11 @@ function Header() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block" , color: trigger ? 'white' : 'black'}}
+                  sx={{
+                    my: 2,
+                    display: "block",
+                    color: trigger ? "white" : "black",
+                  }}
                 >
                   {page}
                 </Button>

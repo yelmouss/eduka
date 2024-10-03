@@ -50,12 +50,6 @@ function SectionContact() {
             </Box>
 
             <p>
-              <strong>Adresse :</strong> 1 rue de la Paix, 75000 Paris
-            </p>
-            <p>
-              <strong>Téléphone :</strong> +33 1 23 45 67 89
-            </p>
-            <p>
               <strong>Email :</strong>
               <a href="mailto:contact@edukalis.com">contact@edukalis.com</a>
             </p>
@@ -70,7 +64,7 @@ function SectionContact() {
                 NOUS CONTACTER
               </Typography>
               <Box className="flex items-center justify-center">
-                <form  autoComplete="off">
+                <form autoComplete="off">
                   <Grid container spacing={2}>
                     <Grid size={12}>
                       <TextField
