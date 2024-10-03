@@ -93,7 +93,7 @@ function Section4() {
               >
                 <span className="text-red-500">E</span>TUDIANTS
               </h2>
-              <div className="py-20 relative h-[400px] w-[420px] overflow-hidden rounded-lg">
+              <div className="py-20 relative h-[400px] w-full overflow-hidden rounded-lg">
                 <Image
                   fill
                   src="/Visuels-articles.png"

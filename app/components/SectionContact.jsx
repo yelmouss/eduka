@@ -119,17 +119,19 @@ function SectionContact() {
   return (
     <section ref={ref}>
       <Container sx={{ p: 4, py: 10, color: theme.two.main }}>
-      <Image
-                src="/LOGO_EDUKALIS.png"
-                alt="Edukalis"
-                width={200}
-                height={200}
-                style={{
-                  alignSelf: "start",
-                  justifySelf: "start",
-                }}
-              />
-      <h4 className="text-4xl py-10">Ensemble, faisons avancer vos ambitions !</h4>
+        <Image
+          src="/LOGO_EDUKALIS.png"
+          alt="Edukalis"
+          width={200}
+          height={200}
+          style={{
+            alignSelf: "start",
+            justifySelf: "start",
+          }}
+        />
+        <h4 className="text-4xl py-10">
+          Ensemble, faisons avancer vos ambitions !
+        </h4>
         <Grid container spacing={3}>
           <Grid
             size={{ xs: 12, sm: 6 }}
@@ -162,7 +164,11 @@ function SectionContact() {
             </motion.div>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <motion.div initial={{ opacity: 0, x: 50 }} animate={controls}>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={controls}
+             
+            >
               <Paper elevation={3} sx={{ p: 4 }}>
                 <Typography
                   className="text-2xl font-bold text-red-500 py-5"

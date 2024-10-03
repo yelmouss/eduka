@@ -47,6 +47,7 @@ function Section1() {
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.2 }}
+            className="py-10"
           >
             <Image
               src="/LOGO_EDUKALIS.png"
@@ -55,6 +56,7 @@ function Section1() {
               height={200}
             />
           </motion.div>
+        
           <motion.div
             initial={{ opacity: 0, x: -100, rotate: -10 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
