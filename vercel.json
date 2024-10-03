@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/Video1.mp4",
+        "destination": "/public/Video1.mp4"
+      }
+    ]
+  }
+  
