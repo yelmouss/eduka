@@ -8,13 +8,9 @@ import Section7 from "./components/Section7";
 import Section8 from "./components/Section8";
 import SectionContact from "./components/SectionContact";
 
-
 export default function Home() {
   return (
-    <main
-      className="w-full
-    "
-    >
+    <main className="w-full">
       <Section1 />
       <Section2 />
       <Section3 />
@@ -24,8 +20,6 @@ export default function Home() {
       <Section7 />
       <Section8 />
       <SectionContact />
-
-      
     </main>
   );
 }
