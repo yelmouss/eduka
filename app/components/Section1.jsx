@@ -2,6 +2,7 @@
 import Grid from "@mui/material/Grid2";
 import { Typography } from "@mui/material";
 import { useTheme } from "@emotion/react";
+import Image from "next/image";
 
 function Section1() {
   const theme = useTheme();
@@ -23,6 +24,7 @@ function Section1() {
             py: 10,
           }}
         >
+         
           <Typography
             variant="h2"
             sx={{
@@ -60,12 +62,13 @@ function Section1() {
           }}
           className={"flex items-center justify-center"}
         >
-          <Typography variant="h2"  sx={{
-              fontSize: {
-                md: "3rem", // Correspond à lg:text-3xl
-                xs: "1rem", // Correspond à md:text-1xl
-              },
-            }}>Edukalis</Typography>
+            <Image
+            src="/LOGO_EDUKALIS.png"
+            alt="Edukalis"
+            width={200}
+            height={200}
+            
+            />
         </Grid>
       </Grid>
     </section>
