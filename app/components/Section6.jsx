@@ -78,6 +78,7 @@ function Section6() {
                   className="my-4 rounded-lg"
                   width="100%"
                   height="auto"
+                  controls={false}
                 />
               </div>
               <Link to="sectionContact" smooth={true} duration={500}>

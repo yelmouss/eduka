@@ -90,6 +90,7 @@ function Section5() {
         className="section5-video lazy"
         width="100%"
         height="auto"
+        controls={false}
       />
 
       <Container className="py-20 text-center">

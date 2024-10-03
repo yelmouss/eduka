@@ -47,8 +47,8 @@ function Header() {
         position="sticky"
         sx={{
           color: theme.two.main,
-          bgcolor: trigger ? "rgba(0, 0, 0, 0.6)" : theme.four.main,
-          backdropFilter: trigger ? "blur(10px)" : "none",
+          bgcolor: trigger ?  theme.four.main : "rgba(0, 0, 0, 0.6)" ,
+          backdropFilter: trigger ?  "none" : "blur(10px)",
           transition: "background-color 0.3s, backdrop-filter 0.3s",
         }}
       >
@@ -71,7 +71,7 @@ function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color={trigger ? "white" : theme.two.main}
+                color={trigger ?  theme.two.main : "white" }
               >
                 <MenuIcon />
               </IconButton>
@@ -124,7 +124,7 @@ function Header() {
                 sx={{
                   my: 2,
                   display: "block",
-                  color: trigger ? "white" : "black",
+                  color: trigger ? "black": "white" ,
                 }}
               >
                 <ScrollLink
