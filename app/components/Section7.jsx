@@ -66,7 +66,7 @@ function Section7() {
                 <span className="text-red-500">E</span>ntreprises
               </Typography>
               <video autoPlay loop muted className="my-4 w-full rounded-lg">
-                <source src="/video3.mp4" type="video/mp4" />
+                <source src="/Video3.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <Button
