@@ -53,18 +53,7 @@ function Section2() {
           }}
           className={"flex items-center justify-center"}
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={controls}
-            transition={{ duration: 1.2 }}
-          >
-            <img
-              src="/LOGO_EDUKALIS.png"
-              alt="Edukalis"
-              width={200}
-              height={200}
-            />
-          </motion.div>
+       
         </Grid>
         <Grid
           size={{ xs: 12, md: 6 }}
@@ -88,6 +77,18 @@ function Section2() {
               className="bg-white bg-opacity-75 backdrop-filter backdrop-blur-lg"
               elevation={5}
             >
+                 <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={controls}
+            transition={{ duration: 1.2 }}
+          >
+            <img
+              src="/LOGO_EDUKALIS.png"
+              alt="Edukalis"
+              width={200}
+              height={200}
+            />
+          </motion.div>
               <List>
                 <ListItem>
                   <ListItemText primary="Une expertise de plus de 30 ans dans le secteur de l’éducation et de la formation," />

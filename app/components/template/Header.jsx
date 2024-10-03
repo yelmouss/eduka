@@ -14,15 +14,18 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useScrollTrigger } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import Image from "next/image";
+import { Link as ScrollLink } from "react-scroll";
+
 
 const pages = [
-  "A propos",
-  "Etudiants",
-  "Ecoles",
-  "Entreprises",
-  "Forum’Educ",
-  "Contact",
+  { name: "A propos", id: "section1" },
+  { name: "Etudiants", id: "section2" },
+  { name: "Ecoles", id: "section3" },
+  { name: "Entreprises", id: "section4" },
+  { name: "Forum’Educ", id: "section5" },
+  { name: "Contact", id: "sectionContact" },
 ];
+
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -89,14 +92,18 @@ function Header() {
                 sx={{ display: { xs: "block", md: "none" } }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography
-                      sx={{ textAlign: "center", color: theme.one.main }}
-                    >
-                      {page}
-                    </Typography>
-                  </MenuItem>
-                ))}
+              <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                <ScrollLink
+                  to={page.id}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  {page.name}
+                </ScrollLink>
+              </MenuItem>
+            ))}
               </Menu>
             </Box>
 
@@ -110,19 +117,27 @@ function Header() {
               />
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    display: "block",
-                    color: trigger ? "white" : "black",
-                  }}
+            {pages.map((page) => (
+              <Button
+                key={page.id}
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  display: "block",
+                  color: trigger ? "white" : "black",
+                }}
+              >
+                <ScrollLink
+                  to={page.id}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                  style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  {page}
-                </Button>
-              ))}
+                  {page.name}
+                </ScrollLink>
+              </Button>
+            ))}
             </Box>
           </Toolbar>
         </Container>

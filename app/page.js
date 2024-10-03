@@ -12,14 +12,27 @@ export default function Home() {
   return (
     <main className="w-full">
       <Section1 />
-      <Section2 />
+
+      <div id="section1">
+        <Section2 />
+      </div>
       <Section3 />
-      <Section4 />
+      <div id="section2">
+        <Section4 />
+      </div>
       <Section5 />
-      <Section6 />
-      <Section7 />
-      <Section8 />
-      <SectionContact />
+      <div id="section3">
+        <Section6 />
+      </div>
+      <div id="section4">
+        <Section7 />
+      </div>
+      <div id="section5">
+        <Section8 />
+      </div>
+      <div id="sectionContact">
+        <SectionContact />
+      </div>
     </main>
   );
 }

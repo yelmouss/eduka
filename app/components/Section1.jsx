@@ -43,6 +43,18 @@ function Section1() {
             py: 10,
           }}
         >
+           <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2 }}
+          >
+            <Image
+              src="/LOGO_EDUKALIS.png"
+              alt="Edukalis"
+              width={200}
+              height={200}
+            />
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -100, rotate: -10 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
@@ -62,8 +74,8 @@ function Section1() {
                 },
               }}
             >
-              <span className="text-red-500">P</span>artenaire pour un avenir
-              brillant{" "}
+              <span className="text-red-500 font-bold">P</span>artenaire pour un
+              avenir brillant{" "}
             </Typography>
           </motion.div>
           <motion.div
@@ -86,11 +98,12 @@ function Section1() {
               fontWeight={"bold"}
               style={{ color: theme.three.main }}
             >
-              <span className="text-red-500">E</span>TUDIANT - ECOLE- ENTREPRISE
+              <span className="text-red-500">E</span>TUDIANT -{" "}
+              <span className="text-red-500">E</span>COLE-{" "}
+              <span className="text-red-500">E</span>NTREPRISE
             </Typography>
           </motion.div>
         </Grid>
-
 
         {/* Grid droite avec image */}
         <Grid
@@ -108,18 +121,7 @@ function Section1() {
           }}
           className={"flex items-center justify-center"}
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2 }}
-          >
-            <Image
-              src="/LOGO_EDUKALIS.png"
-              alt="Edukalis"
-              width={200}
-              height={200}
-            />
-          </motion.div>
+         
         </Grid>
       </Grid>
     </section>
