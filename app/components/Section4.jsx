@@ -9,7 +9,7 @@ function Section4() {
   const theme = useTheme();
   return (
     <section className="min-h-screen flex flex-col items-center justify-start w-full p-5 py-20">
-      <Container maxWidth={"lg"}>
+      <Container maxWidth={"lg"} sx={{ color: theme.two.main,}}>
         <Grid container spacing={10}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Image

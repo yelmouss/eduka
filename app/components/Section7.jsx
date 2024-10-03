@@ -14,6 +14,7 @@ function Section7() {
       <Container
         sx={{
           py: 10,
+          color: theme.two.main,
         }}
       >
         <Grid container spacing={3}>

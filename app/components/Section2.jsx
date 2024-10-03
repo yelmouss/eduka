@@ -1,12 +1,16 @@
-import React from "react";
+"use client"
 import Grid from "@mui/material/Grid2";
 
 import { Typography, List, ListItem, ListItemText } from "@mui/material";
 import Image from "next/image";
+import { useTheme } from "@emotion/react";
 
 function Section2() {
+ const theme = useTheme()
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center w-full">
+    <section className="flex flex-col items-center justify-center w-full" style={{
+      color: theme.two.main,
+    }}>
       <Grid container spacing={0} sx={{ width: "100%" }}>
         <Grid
           size={{ xs: 12, md: 6 }}

@@ -7,6 +7,7 @@ import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import ReactPlayer from "react-player";
 import { useEffect } from 'react';
 import LazyLoad from 'vanilla-lazyload';
+import { useTheme } from "@emotion/react";
 const prestations = [
   {
     title: "ORIENTATION ET CONSEILS",
@@ -42,6 +43,8 @@ const prestations = [
 ];
 
 function Section5() {
+
+  const theme = useTheme();
   useEffect(() => {
     const lazyLoadInstance = new LazyLoad({
       elements_selector: ".lazy",
@@ -52,7 +55,7 @@ function Section5() {
     };
   }, []);
   return (
-    <section className="section5-container">
+    <section className="section5-container" style={{ color: theme.two.main,}}>
       <ReactPlayer
         url="/Video1.mp4"
         playing

@@ -15,7 +15,7 @@ function Section3() {
      
       backgroundSize: "cover",
       backgroundPosition: "center",
-
+      color: theme.two.main,
     }}
   >
       <Container>

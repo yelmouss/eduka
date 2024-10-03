@@ -3,11 +3,11 @@ import "./globals.css";
 import Header from "./components/template/Header";
 import Footer from "./components/template/Footer";
 import Providers from "./providers";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+import { Poppins } from "next/font/google";
+const poppins = Poppins({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -24,14 +24,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+        className={`${poppins.className}  antialiased flex flex-col min-h-screen`}
       >
         <Providers>
           <Header />
           {children}
           <Footer />
         </Providers>
-      
       </body>
     </html>
   );
