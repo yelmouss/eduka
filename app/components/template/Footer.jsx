@@ -16,6 +16,7 @@ function Footer() {
         fontWeight: "bold",
         color: theme.two.main,
       }}
+      className="sticky bottom-0"
     >
       <p>&copy; {currentYear} Edukalis. All rights reserved.</p>
     </footer>
