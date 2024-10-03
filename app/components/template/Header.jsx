@@ -70,7 +70,7 @@ function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color={theme.two.main}
+                color={trigger ? "white" :  theme.two.main}
               >
                 <MenuIcon />
               </IconButton>
@@ -101,8 +101,16 @@ function Header() {
                 ))}
               </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          
+        
+            <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} >
+              <Image
+                src="/LOGO_EDUKALIS.png"
+                alt="Edukalis"
+                width={100}
+                height={100}
+                quality={100}
+              />
+            </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Button

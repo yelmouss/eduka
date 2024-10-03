@@ -20,10 +20,10 @@ function Section1() {
         }}
         >
           <Typography variant="h2">
-            Partenaire pour un avenir brillant{" "}
+          <span className="text-red-500">P</span>artenaire pour un avenir brillant{" "}
           </Typography>
           <Typography variant="h3" fontWeight={"bold"}>
-            ETUDIANT - ECOLE- ENTREPRISE
+           <span className="text-red-500">E</span>TUDIANT - ECOLE- ENTREPRISE
           </Typography>
         </Grid>
         <Grid
