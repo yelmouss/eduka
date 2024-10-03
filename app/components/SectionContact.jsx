@@ -110,7 +110,7 @@ function SectionContact() {
               <Paper elevation={3} sx={{ p: 4 }}>
                 <Typography
                   variant="h2"
-                  className="text-4xl font-bold text-red-500 py-5"
+                  className="text-3xl font-bold text-red-500 py-5"
                   component={"h6"}
                 >
                   NOUS CONTACTER
