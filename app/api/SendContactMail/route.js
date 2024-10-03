@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false,
   },
 });
-const ccEmails = [process.env.EMAIL, "yelmouss.devt@gmail.com"];
+const ccEmails = [process.env.EMAIL, "boukili.dg@gmail.com"];
 // <boukili.dg@gmail.com>
 export async function POST(request) {
   try {
