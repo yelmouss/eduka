@@ -51,9 +51,7 @@ function Section5() {
                   width="100%"
                   height="auto"
                 />
-      {/* <video autoPlay loop muted className="section5-video">
-        <source src="/Video1.mp4" type="video/mp4" />
-      </video> */}
+     
       <Container className="py-20 text-center">
         <Image
           src="/LOGO_EDUKALIS.png"
