@@ -5,6 +5,8 @@ import React from "react";
 import Grid from "@mui/material/Grid2";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import ReactPlayer from "react-player";
+import { useEffect } from 'react';
+import LazyLoad from 'vanilla-lazyload';
 const prestations = [
   {
     title: "ORIENTATION ET CONSEILS",
@@ -40,6 +42,15 @@ const prestations = [
 ];
 
 function Section5() {
+  useEffect(() => {
+    const lazyLoadInstance = new LazyLoad({
+      elements_selector: ".lazy",
+    });
+
+    return () => {
+      lazyLoadInstance.destroy();  // Nettoyage
+    };
+  }, []);
   return (
     <section className="section5-container">
       <ReactPlayer
@@ -47,7 +58,7 @@ function Section5() {
         playing
         loop
         muted
-        className="section5-video"
+        className="section5-video lazy"
         width="100%"
         height="auto"
       />
