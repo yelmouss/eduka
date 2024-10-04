@@ -10,7 +10,7 @@ import SectionContact from "./components/SectionContact";
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main className="w-full" style={{background : "#FFFFF7"}}>
       <Section1 />
 
       <div id="section1">

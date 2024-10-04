@@ -67,7 +67,7 @@ function SectionContact() {
         <div style="text-align: center; padding: 20px; background-color: ${
           theme.four.main
         };">
-          <img src="/LOGO_EDUKALIS.png" alt="Edukalis" width="200" height="200" />
+          <img src="https://www.edukalis.com/LOGO_EDUKALIS.png" alt="Edukalis" width="200" height="200" />
         </div>
         <div style="padding: 20px;">
           <h1 style="color: ${theme.one.main};">Nouvelle demande de contact</h1>

@@ -16,7 +16,6 @@ import { useTheme } from "@emotion/react";
 import Image from "next/image";
 import { Link as ScrollLink } from "react-scroll";
 
-
 const pages = [
   { name: "A propos", id: "section1" },
   { name: "Etudiants", id: "section2" },
@@ -25,7 +24,6 @@ const pages = [
   { name: "Forum’Educ", id: "section5" },
   { name: "Contact", id: "sectionContact" },
 ];
-
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -43,12 +41,15 @@ function Header() {
   return (
     <>
       <Box id="back-to-top-anchor" />
+
       <AppBar
         position="sticky"
         sx={{
           color: theme.two.main,
-          bgcolor: trigger ?  theme.four.main : "rgba(0, 0, 0, 0.6)" ,
-          backdropFilter: trigger ?  "none" : "blur(10px)",
+          background: trigger
+            ? `linear-gradient(35deg,  ${theme.four.main}, ${theme.one.main})`
+            : `linear-gradient(35deg, ${theme.one.main}, ${theme.four.main})`,
+          backdropFilter: "blur(10px)",
           transition: "background-color 0.3s, backdrop-filter 0.3s",
         }}
       >
@@ -71,7 +72,7 @@ function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color={trigger ?  theme.two.main : "white" }
+                color={trigger ? theme.two.main : "white"}
               >
                 <MenuIcon />
               </IconButton>
@@ -92,18 +93,18 @@ function Header() {
                 sx={{ display: { xs: "block", md: "none" } }}
               >
                 {pages.map((page) => (
-              <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                <ScrollLink
-                  to={page.id}
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  {page.name}
-                </ScrollLink>
-              </MenuItem>
-            ))}
+                  <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                    <ScrollLink
+                      to={page.id}
+                      smooth={true}
+                      duration={500}
+                      offset={-70}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {page.name}
+                    </ScrollLink>
+                  </MenuItem>
+                ))}
               </Menu>
             </Box>
 
@@ -117,27 +118,27 @@ function Header() {
               />
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page.id}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  display: "block",
-                  color: trigger ? "black": "white" ,
-                }}
-              >
-                <ScrollLink
-                  to={page.id}
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                  style={{ textDecoration: "none", color: "inherit" }}
+              {pages.map((page) => (
+                <Button
+                  key={page.id}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    display: "block",
+                    color: trigger ? "black" : "white",
+                  }}
                 >
-                  {page.name}
-                </ScrollLink>
-              </Button>
-            ))}
+                  <ScrollLink
+                    to={page.id}
+                    smooth={true}
+                    duration={500}
+                    offset={-70}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    {page.name}
+                  </ScrollLink>
+                </Button>
+              ))}
             </Box>
           </Toolbar>
         </Container>

@@ -25,7 +25,7 @@ function Section1() {
       ref={ref}
       className="relative min-h-screen flex flex-col items-center justify-center"
       style={{
-        background: `linear-gradient(135deg, white, ${theme.five.main})`,
+      
         color: theme.one.main,
       }}
     >
@@ -91,14 +91,12 @@ function Section1() {
                   md: "3rem",
                   xs: "1rem",
                 },
-                transition: "color 1s",
-                "&:hover": {
-                  color: theme.four.main,
-                },
+                color: theme.two.main,
+              
               }}
               variant="h3"
               fontWeight={"bold"}
-              style={{ color: theme.three.main }}
+            
             >
               <span className="text-red-500">E</span>TUDIANT -{" "}
               <span className="text-red-500">E</span>COLE-{" "}

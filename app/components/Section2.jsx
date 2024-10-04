@@ -32,7 +32,7 @@ function Section2() {
       ref={ref}
       className="relative min-h-screen flex flex-col items-center justify-center w-full"
       style={{
-        background: `linear-gradient(135deg, white, ${theme.five.main})`,
+      
         color: theme.one.main,
       }}
     >
